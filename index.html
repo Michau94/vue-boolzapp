@@ -67,7 +67,7 @@
                 <div class="lista-utenti bg-light">
 
                     <div v-if="show(contact.name)" id="friend" v-for="contact in contacts"
-                        class="user d-flex align-items-center ">
+                        class="user d-flex align-items-center" @click="actualUser(contact)">
                         <div class="avatar col-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt=""></div>
                         </div>
@@ -85,10 +85,10 @@
 
                     <div class="user-info p-1 d-flex align-items-center ">
                         <div class="avatar col-2">
-                            <div><img class="img-fluid" src="./img/avatar_1.jpg" alt=""></div>
+                            <div><img class="img-fluid" :src="'./img/avatar' + currentAvatar + '.jpg'" alt=""></div>
                         </div>
                         <div class="mx-3">
-                            <p class="m-0">Nome Utente
+                            <p class="m-0"> {{currentUser}}
                             </p>
                             <p class="m-0 log-time">{{ today.format('DD/MM/YYYY - HH:mm') }}</p>
                         </div>
@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- CHAT SECTION -->
-                <div class="main-chat d-flex flex-column">
+                <div id="mainChat" class="main-chat d-flex flex-column">
                     <div class="send chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
                         <p class="m-1 ">Il messaggio comparirà qui</p>
                         <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY')}}</p>
@@ -111,6 +111,9 @@
                         <p class="m-1 ">Messaggio di risposta</p>
                         <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY')}}</p>
                     </div>
+
+
+
                 </div>
 
                 <!-- MESSAGE SECTION -->
