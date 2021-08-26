@@ -9,6 +9,9 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css'
         integrity='sha512-F7WyTLiiiPqvu2pGumDR15med0MDkUIo5VTVyyfECR5DZmCnDhti9q5VID02ItWjq6fvDfMaBaDl2J3WdL1uxA=='
         crossorigin='anonymous' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
+        integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=='
+        crossorigin='anonymous' />
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -19,17 +22,37 @@
 
 
         <div class="row">
-            <div class="col-4 bg-secondary p-0">
-                <div class="user">
+            <div class="col-4 bg-main p-0">
+                <div class="user d-flex align-items-center justify-content-between ">
 
-                    <p>Nome utente</p>
+                    <div class="user-info p-1 d-flex align-items-center ">
+                        <div class="avatar col-2">
+                            <div><img class="img-fluid" src="./img/avatar_1.jpg" alt=""></div>
+                        </div>
+                        <span>Nome Utente
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fas fa-circle-notch mx-2"></i>
+                        <i class="fas fa-comment-alt mx-2"></i>
+                        <i class="fas fa-ellipsis-v mx-2"></i>
+                    </div>
+                </div>
+
+                <div class="notifiche d-flex align-items-center ">
+
+                    <span class="bg-light br-50 d-inline-block p-2 mx-3
+                    "><i class="fas fa-bell-slash"></i></span>
+                    <div class="m-0">
+                        <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
+                        <p class="m-0">Attiva Notifiche Desktop</p>
+                    </div>
+
+
 
                 </div>
-                <div class="notifiche bg-danger">
 
-                    <p>Notifiche </p>
-
-                </div>
+                <!-- SEARCH BAR -->
                 <nav class="navbar navbar-light bg-light d-flex justify-content-center">
                     <div class="w-100 p-1">
 
@@ -37,10 +60,16 @@
 
                     </div>
                 </nav>
-                <div class="lista-utenti">
 
-                    <div class="user">
-                        <p>Utente1</p>
+                <!-- USER LIST -->
+                <div class="lista-utenti bg-light">
+
+                    <div class="user d-flex align-items-center">
+                        <div class="avatar col-2">
+                            <div><img class="img-fluid" src="./img/avatar_2.jpg" alt=""></div>
+                        </div>
+                        <span class="mx-2">Ermenegildo
+                        </span>
                     </div>
                     <div class="user">
                         <p>Utente1</p>
@@ -65,20 +94,47 @@
                     </div>
                 </div>
             </div>
-            <div class="col-8 bg-primary p-0">
-                <div class="user">
+            <div class="col-8 bg-main p-0">
+                <!-- WHO AM I SPEAKING TO? -->
+                <div class="user d-flex align-items-center justify-content-between ">
 
-                    <p>Utente interlocutore</p>
+                    <div class="user-info p-1 d-flex align-items-center ">
+                        <div class="avatar col-2">
+                            <div><img class="img-fluid" src="./img/avatar_1.jpg" alt=""></div>
+                        </div>
+                        <div class="mx-3">
+                            <p class="m-0">Nome Utente
+                            </p>
+                            <p class="m-0 log-time">Ultimo accesso</p>
+                        </div>
+
+                    </div>
+                    <div>
+                        <i class="fas fa-search mx-2"></i>
+                        <i class="fas fa-paperclip mx-2"></i>
+                        <i class="fas fa-ellipsis-v mx-2"></i>
+                    </div>
+                </div>
+
+                <!-- CHAT SECTION -->
+                <div class="main-chat d-flex-c justify-content-end">
+
+                    <div class="chat-mex m-3 d-flex align-items-center col-6">
+                        <p class="m-0">Messaggio sarà scritto qui</p>
+                    </div>
+                    <div class="chat-mex m-3 d-flex align-items-center col-6">
+                        <p class="m-0">Messaggio sarà scritto qui</p>
+                    </div>
 
                 </div>
-                <div class="main-chat">
 
-                    <p>Chat Qui</p>
+                <!-- MESSAGE SECTION -->
+                <div class="user d-flex align-items-center justify-content-around bg-main">
 
-                </div>
-                <div class="user bg-danger">
+                    <i class="far fa-smile fa-2x"></i>
+                    <input type="text" class="m-2 w-75" placeholder="Digita il tuo messaggio">
+                    <i class="fas fa-microphone fa-2x"></i>
 
-                    <p>Barra messaggio</p>
 
                 </div>
 
