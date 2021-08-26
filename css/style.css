@@ -13,6 +13,10 @@
   background-color: #ece5dd;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 /* main */
 
 body {
@@ -76,7 +80,7 @@ body {
 .main-chat {
   overflow-y: scroll;
   background-image: url(../img/mine.jpg);
-  height: calc(100% - 100px);
+  height: 400px;
 }
 
 .chat-mex {

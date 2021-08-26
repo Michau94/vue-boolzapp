@@ -3,7 +3,6 @@ console.log(user);
 console.log(contacts);
 
 dayjs.extend(dayjs_plugin_customParseFormat);
-const mainChat = document.getElementById('mainChat');
 
 
 const root = new Vue({
@@ -21,7 +20,7 @@ const root = new Vue({
 
     },
     methods: {
-        show(friendName) {
+        showFriend(friendName) {
 
             const updName = friendName.toLowerCase();
 
@@ -36,7 +35,7 @@ const root = new Vue({
             this.currentUser = user.name;
             this.currentAvatar = user.avatar;
 
-        }
+        },
 
     }
 })
