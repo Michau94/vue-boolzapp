@@ -57,6 +57,9 @@ body {
   border-radius: 50%;
   overflow: hidden;
 }
+#friend {
+  border-bottom: 1px solid lightgray;
+}
 #friend:hover {
   cursor: pointer;
   background-color: darkgrey;
@@ -75,19 +78,18 @@ body {
   height: calc(100% - 100px);
 }
 
+.chat-mex {
+  border-radius: 25px;
+  padding: 20px 15px;
+  overflow-wrap: break-word;
+}
 /* message status class */
 
 .send {
   align-self: flex-end;
   background-color: limegreen;
 }
-
 .received {
   align-self: flex-start;
   background-color: linen;
-}
-.chat-mex {
-  border-radius: 25px;
-  padding: 20px 15px;
-  overflow-wrap: break-word;
 }
