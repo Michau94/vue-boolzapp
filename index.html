@@ -12,13 +12,15 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
         integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=='
         crossorigin='anonymous' />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./js/users.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
 <body class="container-flex">
 
-    <div class="container">
+    <div class="container" id="root">
 
 
         <div class="row">
@@ -27,9 +29,9 @@
 
                     <div class="user-info p-1 d-flex align-items-center ">
                         <div class="avatar col-2">
-                            <div><img class="img-fluid" src="./img/avatar_1.jpg" alt=""></div>
+                            <div><img class="img-fluid" :src="'./img/avatar' + user.avatar + '.jpg'" alt=""></div>
                         </div>
-                        <span>Nome Utente
+                        <span>{{ user.name }}
                         </span>
                     </div>
                     <div>
@@ -47,9 +49,6 @@
                         <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
                         <p class="m-0">Attiva Notifiche Desktop</p>
                     </div>
-
-
-
                 </div>
 
                 <!-- SEARCH BAR -->
@@ -64,37 +63,20 @@
                 <!-- USER LIST -->
                 <div class="lista-utenti bg-light">
 
-                    <div class="user d-flex align-items-center">
+                    <div id="friend" v-for="contact in contacts"
+                        class="user d-flex align-items-center border-bottom border-top border-secondary">
                         <div class="avatar col-2">
-                            <div><img class="img-fluid" src="./img/avatar_2.jpg" alt=""></div>
+                            <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt=""></div>
                         </div>
-                        <span class="mx-2">Ermenegildo
+                        <span class="mx-2"> {{contact.name}}
                         </span>
                     </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
-                    <div class="user">
-                        <p>Utente1</p>
-                    </div>
+
                 </div>
             </div>
+
             <div class="col-8 bg-main p-0">
+
                 <!-- WHO AM I SPEAKING TO? -->
                 <div class="user d-flex align-items-center justify-content-between ">
 
@@ -117,15 +99,15 @@
                 </div>
 
                 <!-- CHAT SECTION -->
-                <div class="main-chat d-flex-c justify-content-end">
-
-                    <div class="chat-mex m-3 d-flex align-items-center col-6">
-                        <p class="m-0">Messaggio sarà scritto qui</p>
+                <div class="main-chat d-flex flex-column">
+                    <div class="send chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
+                        <p class="m-1 ">Il messaggio comparirà qui</p>
+                        <p class="m-1  log-time align-self-end">Data qui</p>
                     </div>
-                    <div class="chat-mex m-3 d-flex align-items-center col-6">
-                        <p class="m-0">Messaggio sarà scritto qui</p>
+                    <div class="received chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
+                        <p class="m-1 ">Messaggio di risposta</p>
+                        <p class="m-1  log-time align-self-end">Data qui</p>
                     </div>
-
                 </div>
 
                 <!-- MESSAGE SECTION -->
