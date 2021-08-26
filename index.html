@@ -66,11 +66,12 @@
                 <!-- USER LIST -->
                 <div class="lista-utenti bg-light">
 
-                    <div id="friend" v-for="contact in contacts" class="user d-flex align-items-center ">
+                    <div v-if="show(contact.name)" id="friend" v-for="contact in contacts"
+                        class="user d-flex align-items-center ">
                         <div class="avatar col-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt=""></div>
                         </div>
-                        <span class="mx-2"> {{contact.name}}
+                        <span class="mx-2"> {{ contact.name }}
                         </span>
                     </div>
 
@@ -89,7 +90,7 @@
                         <div class="mx-3">
                             <p class="m-0">Nome Utente
                             </p>
-                            <p class="m-0 log-time">Ultimo accesso</p>
+                            <p class="m-0 log-time">{{ today.format('DD/MM/YYYY - HH:mm') }}</p>
                         </div>
 
                     </div>

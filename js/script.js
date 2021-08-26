@@ -16,5 +16,16 @@ const root = new Vue({
 
 
     },
-    methods: {}
+    methods: {
+        show(friendName) {
+
+            const updName = friendName.toLowerCase();
+
+            if (this.search.trim() === '' || !this.search) {
+                return true;
+            }
+
+            return updName.includes(this.search.trim().toLowerCase()) ? true : false;
+        }
+    }
 })
