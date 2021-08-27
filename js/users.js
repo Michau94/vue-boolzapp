@@ -1,5 +1,5 @@
 const user = {
-  name: 'Nome Utente',
+  name: 'Michau',
   avatar: '_io',
 };
 const contacts = [
@@ -87,5 +87,6 @@ const contacts = [
       },
     ],
   },
+
 
 ];

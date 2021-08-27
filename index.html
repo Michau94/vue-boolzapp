@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
+    <link rel="shortcut icon" href="https://www.boolean.careers/favicon.ico" type="image/x-icon">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css'
         integrity='sha512-F7WyTLiiiPqvu2pGumDR15med0MDkUIo5VTVyyfECR5DZmCnDhti9q5VID02ItWjq6fvDfMaBaDl2J3WdL1uxA=='
         crossorigin='anonymous' />
@@ -25,15 +26,15 @@
     <div class="container " id="root">
 
 
-        <div class="row rounded shadow">
+        <div class="row shadow rounded overflow-auto">
             <div class="col-4 bg-main p-0 h-100">
                 <div class="user d-flex align-items-center justify-content-between ">
 
                     <div class="user-info p-1 d-flex align-items-center ">
-                        <div class="avatar col-2">
+                        <div class="avatar col-2 m-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + user.avatar + '.jpg'" alt=""></div>
                         </div>
-                        <span>{{ user.name }}
+                        <span> {{ user.name }}
                         </span>
                     </div>
                     <div>
@@ -45,19 +46,21 @@
 
                 <div class="notifiche d-flex align-items-center ">
 
-                    <span class="bg-light br-50 d-inline-block p-2 mx-3
+                    <span class=" d-none d-md-block bg-light br-50 d-inline-block p-2 mx-3
                     "><i class="fas fa-bell-slash"></i></span>
                     <div class="m-0">
-                        <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
-                        <a href="">Attiva Notifiche Desktop
-                        </a>
+                        <div class="m-0">Ricevi notifiche di nuovi messaggi</div>
+                        <div class="fs-6 clickable text-decoration-underline">
+                            <small>Attiva le notifiche desktop</small>
+                        </div>
+
                     </div>
                 </div>
 
                 <!-- SEARCH BAR -->
                 <nav class="navbar navbar-light bg-light d-flex justify-content-center">
                     <div class="w-100 p-1">
-
+                        <i class="fas fa-search"></i>
                         <input v-model="search" class="form-control" type="search"
                             placeholder="Cerca o inizia una nuova chat" aria-label="Search">
 
@@ -65,11 +68,11 @@
                 </nav>
 
                 <!-- USER LIST -->
-                <div class="lista-utenti bg-light d-flex flex-grow-1 flex-column">
+                <div class="lista-utenti bg-light d-flex  flex-column">
 
                     <div v-if="showFriend(contact.name)" id="friend" v-for="(contact,index) in contacts"
                         class="user d-flex align-items-center" @click="actualUser(contact,index)">
-                        <div class="avatar col-2">
+                        <div class="avatar col-2 m-1">
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt=""></div>
                         </div>
                         <span class="mx-2"> {{ contact.name }}
@@ -121,7 +124,7 @@
                 </div>
 
                 <!-- MESSAGE SECTION -->
-                <div class="user d-flex align-items-center justify-content-around bg-main">
+                <div class="user d-flex align-items-center justify-content-evenly bg-main">
 
                     <i class=" clickable far fa-smile fa-2x"></i>
                     <input v-model="message" @keyup.enter="newMessage(currentIndex)" type="text" class="m-2 w-75"

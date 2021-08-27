@@ -4,6 +4,10 @@
   border-radius: 50%;
 }
 
+.br-15 {
+  border-radius: 15px;
+}
+
 .log-time {
   font-size: 0.8rem;
   color: darkgrey;
@@ -34,34 +38,47 @@ body {
 .row {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 /* Users section */
+
 .lista-utenti {
-  height: calc(100% - 170px);
+  height: calc(100% - 200px);
   overflow-y: scroll;
 }
 .navbar {
   height: 60px;
+  position: relative;
+}
+
+.navbar i {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.navbar input {
+  padding-left: 40px;
 }
 
 .notifiche {
-  height: 60px;
-  background-color: cyan;
+  height: 70px;
+  background-color: #8edafc;
 }
 
 .notifiche i {
-  color: cyan;
+  color: #8edafc;
 }
 
 .user {
-  height: 50px;
+  height: 70px;
   width: 100%;
 }
 
 .avatar {
-  width: 30px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -77,7 +94,7 @@ body {
 
 .main-chat {
   background-image: url(../img/mine.jpg);
-  height: calc(100% - 100px);
+  height: calc(100% - 140px);
 }
 
 .chat-mex {
@@ -89,7 +106,7 @@ body {
 
 .send {
   align-self: flex-end;
-  background-color: limegreen;
+  background-color: #d5f9ba;
 }
 .received {
   align-self: flex-start;
