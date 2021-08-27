@@ -124,7 +124,8 @@
                 <div class="user d-flex align-items-center justify-content-around bg-main">
 
                     <i class=" clickable far fa-smile fa-2x"></i>
-                    <input v-model="message" type="text" class="m-2 w-75" placeholder="Digita il tuo messaggio">
+                    <input v-model="message" @keyup.enter="newMessage(currentIndex)" type="text" class="m-2 w-75"
+                        placeholder="Digita il tuo messaggio">
                     <i class=" clickable fas fa-microphone fa-2x"></i>
 
 
