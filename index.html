@@ -20,13 +20,13 @@
 
 </head>
 
-<body class="container-flex">
+<body class="container-flex d-flex align-items-center justify-content-center">
 
-    <div class="container" id="root">
+    <div class="container " id="root">
 
 
-        <div class="row">
-            <div class="col-4 bg-main p-0">
+        <div class="row rounded shadow">
+            <div class="col-4 bg-main p-0 h-100">
                 <div class="user d-flex align-items-center justify-content-between ">
 
                     <div class="user-info p-1 d-flex align-items-center ">
@@ -65,10 +65,10 @@
                 </nav>
 
                 <!-- USER LIST -->
-                <div class="lista-utenti bg-light">
+                <div class="lista-utenti bg-light d-flex flex-grow-1 flex-column">
 
-                    <div v-if="showFriend(contact.name)" id="friend" v-for="contact in contacts"
-                        class="user d-flex align-items-center" @click="actualUser(contact)">
+                    <div v-if="showFriend(contact.name)" id="friend" v-for="(contact,index) in contacts"
+                        class="user d-flex align-items-center" @click="actualUser(contact,index)">
                         <div class="avatar col-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt=""></div>
                         </div>
@@ -76,10 +76,11 @@
                         </span>
                     </div>
 
+
                 </div>
             </div>
 
-            <div class="col-8 bg-main p-0">
+            <div class="col-8 bg-main p-0  h-100">
 
                 <!-- WHO AM I SPEAKING TO? -->
                 <div class="user d-flex align-items-center justify-content-between ">
@@ -103,26 +104,12 @@
                 </div>
 
                 <!-- CHAT SECTION -->
-                <div id="mainChat" class="main-chat d-flex flex-column">
-                    <div class="send chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
-                        <p class="m-1 ">Messaggio compare qui</p>
-                        <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY - HH:mm')}}</p>
-                    </div>
-                    <div class="received chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
-                        <p class="m-1 ">Messaggio di risposta</p>
-                        <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY - HH:mm')}}</p>
-                    </div>
-                    <div class="received chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
-                        <p class="m-1 ">Messaggio di risposta</p>
-                        <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY - HH:mm')}}</p>
-                    </div>
-                    <div class="received chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
-                        <p class="m-1 ">Messaggio di risposta</p>
-                        <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY - HH:mm')}}</p>
-                    </div>
-                    <div class="received chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2">
-                        <p class="m-1 ">Messaggio di risposta</p>
-                        <p class="m-1  log-time align-self-end">{{today.format('DD/MM/YY - HH:mm')}}</p>
+                <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
+                    <div v-for="(message, index) in contacts[currentIndex].messages"
+                        class="send chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
+                        :class="message.status == 'sent' ? 'sent' : 'received'">
+                        <p class="m-1 "> {{ message.message }}</p>
+                        <p class="m-1  log-time align-self-end">{{ message.date }}</p>
                     </div>
 
 

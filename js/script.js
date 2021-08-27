@@ -14,7 +14,8 @@ const root = new Vue({
         message: '',
         today: dayjs(),
         currentUser: 'Michele',
-        currentAvatar: '_1'
+        currentAvatar: '_1',
+        currentIndex: 0,
 
 
 
@@ -31,11 +32,14 @@ const root = new Vue({
             return updName.includes(this.search.trim().toLowerCase()) ? true : false;
         },
 
-        actualUser(user) {
+        actualUser(user, index) {
             this.currentUser = user.name;
             this.currentAvatar = user.avatar;
+            this.currentIndex = index;
 
         },
+
+
 
     }
 })
