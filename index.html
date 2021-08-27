@@ -22,14 +22,10 @@
 </head>
 
 <body class="container-flex d-flex align-items-center justify-content-center">
-
     <div class="container " id="root">
-
-
         <div class="row shadow rounded overflow-auto">
             <div class="col-4 bg-main p-0 h-100">
                 <div class="user d-flex align-items-center justify-content-between ">
-
                     <div class="user-info p-1 d-flex align-items-center ">
                         <div class="avatar col-2 m-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + user.avatar + '.jpg'" alt=""></div>
@@ -53,7 +49,6 @@
                         <div class="fs-6 clickable text-decoration-underline">
                             <small>Attiva le notifiche desktop</small>
                         </div>
-
                     </div>
                 </div>
 
@@ -63,7 +58,6 @@
                         <i class="fas fa-search"></i>
                         <input v-model="search" class="form-control" type="search"
                             placeholder="Cerca o inizia una nuova chat" aria-label="Search">
-
                     </div>
                 </nav>
 
@@ -78,8 +72,6 @@
                         <span class="mx-2"> {{ contact.name }}
                         </span>
                     </div>
-
-
                 </div>
             </div>
 
@@ -93,11 +85,9 @@
                             <div><img class="img-fluid" :src="'./img/avatar' + currentAvatar + '.jpg'" alt=""></div>
                         </div>
                         <div class="mx-3">
-                            <p class="m-0"> {{currentUser}}
-                            </p>
+                            <p class="m-0"> {{currentUser}}</p>
                             <p class="m-0 log-time">Ultimo accesso: {{ today.format('DD/MM/YYYY - HH:mm') }}</p>
                         </div>
-
                     </div>
                     <div>
                         <i class="clickable fas fa-search mx-2"></i>
@@ -109,18 +99,11 @@
                 <!-- CHAT SECTION -->
                 <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
                     <div v-for="(message, index) in contacts[currentIndex].messages"
-                        class="send chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
+                        class="chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
                         :class="message.status == 'sent' ? 'sent' : 'received'">
                         <p class="m-1 "> {{ message.message }}</p>
                         <p class="m-1  log-time align-self-end">{{ message.date }}</p>
                     </div>
-
-
-
-
-
-
-
                 </div>
 
                 <!-- MESSAGE SECTION -->
@@ -130,18 +113,10 @@
                     <input v-model="message" @keyup.enter="newMessage(currentIndex)" type="text" class="m-2 w-75"
                         placeholder="Digita il tuo messaggio">
                     <i class=" clickable fas fa-microphone fa-2x"></i>
-
-
                 </div>
-
-
             </div>
         </div>
-
     </div>
-
-
-
 
 
     <script src="./js/script.js"></script>
