@@ -101,6 +101,7 @@ body {
   border-radius: 25px;
   padding: 20px 15px;
   overflow-wrap: break-word;
+  position: relative;
 }
 /* message status class */
 
@@ -111,4 +112,30 @@ body {
 .received {
   align-self: flex-start;
   background-color: linen;
+}
+
+.smr:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #d5f9ba;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #d5f9ba;
+  right: -10px;
+  bottom: 10px;
+}
+
+.sml:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid linen;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid linen;
+  left: -10px;
+  bottom: 10px;
 }

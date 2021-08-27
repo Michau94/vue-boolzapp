@@ -100,7 +100,7 @@
                 <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
                     <div v-for="(message, index) in contacts[currentIndex].messages"
                         class="chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
-                        :class="message.status == 'sent' ? 'sent' : 'received'">
+                        :class="message.status == 'sent' ? 'sent smr' : 'received sml'">
                         <p class="m-1 "> {{ message.message }}</p>
                         <p class="m-1  log-time align-self-end">{{ message.date }}</p>
                     </div>
