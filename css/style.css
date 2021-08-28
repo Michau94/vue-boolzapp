@@ -44,7 +44,6 @@ body {
 
 .lista-utenti {
   height: calc(100% - 200px);
-  overflow-y: scroll;
 }
 .navbar {
   height: 60px;

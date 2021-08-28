@@ -48,14 +48,24 @@ const root = new Vue({
             };
 
             this.contacts[ind].messages.push(newMessage);
-
             this.message = " ";
 
             setTimeout(() => {
 
+                //array di risposte possibili
+                let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
+                let randomReply = '';
+                let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
+
+
+                //alla vecchia maniera per non dimenticare il for tradizionale
+                for (let i = 0; i < possibleReply.length; i++) {
+                    randomReply = possibleReply[randomIndex]
+                }
+
                 let replyMessage = {
-                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-                    message: 'OK',
+                    date: this.today.format('DD/MM/YYYY HH:mm:ss'),
+                    message: randomReply,
                     status: 'received'
 
                 };
