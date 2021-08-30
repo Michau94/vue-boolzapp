@@ -55,27 +55,33 @@ const root = new Vue({
                 this.contacts[ind].messages.push(newMessage);
                 this.message = "";
 
-
-                setTimeout(() => {
-
-                    //array di risposte possibili
-                    let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
-                    let randomReply = '';
-                    let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
-
-
-                    //alla vecchia maniera per non dimenticare il for tradizionale
-                    for (let i = 0; i < possibleReply.length; i++) {
-                        randomReply = possibleReply[randomIndex]
-                    }
-
-                    const replyMessage = this.createMsgObj(randomReply, 'received');
-
-                    this.contacts[ind].messages.push(replyMessage);
-                    this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
-
-                }, 3000)
             }
+
+            this.sendReply(ind);
+        },
+
+        sendReply(index) {
+
+
+            setTimeout(() => {
+
+                //array di risposte possibili
+                let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
+                let randomReply = '';
+                let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
+
+
+                //alla vecchia maniera per non dimenticare il for tradizionale
+                for (let i = 0; i < possibleReply.length; i++) {
+                    randomReply = possibleReply[randomIndex]
+                }
+
+                const replyMessage = this.createMsgObj(randomReply, 'received');
+
+                this.contacts[index].messages.push(replyMessage);
+                this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
+
+            }, 3000)
         },
 
         deleteMessage(index) {
