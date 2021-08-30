@@ -1,6 +1,4 @@
 console.log('js ok');
-console.log(user);
-console.log(contacts);
 
 dayjs.extend(dayjs_plugin_customParseFormat);
 
@@ -8,8 +6,9 @@ dayjs.extend(dayjs_plugin_customParseFormat);
 const root = new Vue({
     el: "#root",
     data: {
-        user,
-        contacts,
+        data,
+        user: data.user,
+        contacts: data.contacts,
         search: '',
         message: '',
         today: dayjs(),
@@ -21,15 +20,10 @@ const root = new Vue({
 
     },
     methods: {
-        showFriend(friendName) {
+        showFriend(contact) {
+            contact.name.toLowerCase().includes(this.search.toLowerCase()) ? contact.visible = true : contact.visible = false;
 
-            const updName = friendName.toLowerCase();
-
-            if (this.search.trim() === '' || !this.search) {
-                return true;
-            }
-
-            return updName.includes(this.search.trim().toLowerCase()) ? true : false;
+            return contact.visible;
         },
 
         actualUser(user, index) {
@@ -50,6 +44,8 @@ const root = new Vue({
             if (newMessage.message.trim() !== '' || newMessage.message.trim()) {
                 this.contacts[ind].messages.push(newMessage);
                 this.message = "";
+
+                this.scrollDown();
 
 
 
@@ -74,10 +70,19 @@ const root = new Vue({
                     };
 
                     this.contacts[ind].messages.push(replyMessage);
+                    this.scrollDown();
                 }, 2000)
 
-            }
-        }
-    }
 
+            }
+        },
+
+        scrollDown() {
+            const chat = document.getElementById('mainChat');
+            chat.scrollHeight;
+
+
+        }
+
+    }
 })
