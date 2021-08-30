@@ -32,14 +32,20 @@ const root = new Vue({
             this.currentIndex = index;
 
         },
+
+        createMsgObj(message, status) {
+            const msgTemp = {
+                date: this.today.format('DD/MM/YYYY HH:mm:ss'),
+                message: message,
+                status: status,
+            }
+
+            return msgTemp;
+        }
+        ,
         newMessage(ind) {
 
-            let newMessage = {
-                date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-                message: this.message,
-                status: 'sent'
-
-            };
+            let newMessage = this.createMsgObj(this.message, 'sent');
 
             if (newMessage.message.trim() !== '' || newMessage.message.trim()) {
                 this.lastSeen = 'Sta Scrivendo...'
@@ -60,35 +66,23 @@ const root = new Vue({
                         randomReply = possibleReply[randomIndex]
                     }
 
-                    const replyMessage = {
-                        date: this.today.format('DD/MM/YYYY HH:mm:ss'),
-                        message: randomReply,
-                        status: 'received'
-                    };
+                    const replyMessage = this.createMsgObj(randomReply, 'received');
 
                     this.contacts[ind].messages.push(replyMessage);
                     this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
-
-
 
                 }, 3000)
             }
         },
 
         deleteMessage(index) {
-
             return this.contacts[this.currentIndex].messages.splice(index, 1);
-
         },
 
         showLastMessage(contact) {
-
             let lastIndex = contact.messages.length - 1;
             const newMsg = contact.messages[lastIndex].message + " " + contact.messages[lastIndex].date;
             return newMsg;
-
         }
-
     }
-
-})
+});
