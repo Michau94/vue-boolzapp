@@ -30,7 +30,7 @@
                         <div class="avatar col-2 m-2">
                             <div><img class="img-fluid" :src="'./img/avatar' + user.avatar + '.jpg'" alt=""></div>
                         </div>
-                        <span> {{ user.name }}
+                        <span class="user-name"> {{ user.name }}
                         </span>
                     </div>
                     <div>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-column">
-                            <span class="mx-2"> {{ contact.name }}
+                            <span class="mx-2 user-name"> {{ contact.name }}
                             </span>
                             <small> {{ showLastMessage(contact) }}</small>
                         </div>
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="col-8 bg-main p-0  h-100">
+            <div v-if="currentIndex >= 0" class="col-8 bg-main p-0  h-100">
 
                 <!-- WHO AM I SPEAKING TO? -->
                 <div class="user d-flex align-items-center justify-content-between ">
@@ -101,9 +101,6 @@
                         <i class="clickable fas fa-ellipsis-v mx-2"></i>
                     </div>
                 </div>
-
-
-
 
                 <!-- CHAT SECTION -->
                 <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
@@ -131,6 +128,18 @@
                         placeholder="Digita il tuo messaggio">
                     <i class=" clickable fas fa-microphone fa-2x"></i>
                 </div>
+            </div>
+
+
+            <!-- INITIAL SPLASH SCREEN -->
+            <div v-else class="col-8  p-0  h-100">
+                <div class="d-flex flex-column justify-content-center align-items-center h-100 splash ">
+                    <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+                        <div class="w-25"><img class="img-fluid" src="./img/whapp.png" alt="Whapp"></div>
+                        <span class="h3"> Seleziona una chat per iniziare</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

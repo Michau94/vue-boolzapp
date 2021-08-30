@@ -14,7 +14,7 @@ const root = new Vue({
         today: dayjs(),
         currentUser: 'Michele',
         currentAvatar: '_1',
-        currentIndex: 0,
+        currentIndex: -1,
         lastSeen: 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss'),
         visible: null,
         searchMsg: ''
