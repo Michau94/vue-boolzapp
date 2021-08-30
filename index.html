@@ -65,7 +65,8 @@
                 <div class="lista-utenti bg-light d-flex flex-column overflow-auto">
 
                     <div v-if="showFriend(contact)" id="friend" v-for="(contact,index) in contacts"
-                        class="user d-flex align-items-center" @click="actualUser(contact,index)">
+                        class="user d-flex align-items-center" :class="index === currentIndex ? 'active' : null "
+                        @click="actualUser(contact,index)">
                         <div class="avatar col-2 m-1">
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt="">
                             </div>
@@ -102,7 +103,16 @@
                     <div v-for="(message, index) in contacts[currentIndex].messages"
                         class="chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
                         :class="message.status == 'sent' ? 'sent smr' : 'received sml'">
-                        <p class="m-1 "> {{ message.message }}</p>
+                        <div class="dropdown align-self-end">
+                            <i class="fas fa-angle-down"></i>
+                            <div class="dropdown-content">
+                                <button @click="deleteMessage(index)" type="button" class="btn btn-danger">Cancella
+                                </button>
+                            </div>
+                        </div>
+
+                        <p class="m-1 "> {{ message.message }}
+                        </p>
                         <p class="m-1  log-time align-self-end">{{ message.date }}</p>
                     </div>
                 </div>
@@ -118,7 +128,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="./js/script.js"></script>
 </body>

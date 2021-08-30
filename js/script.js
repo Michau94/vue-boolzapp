@@ -45,7 +45,7 @@ const root = new Vue({
                 this.contacts[ind].messages.push(newMessage);
                 this.message = "";
 
-                this.scrollDown();
+
 
 
 
@@ -70,19 +70,18 @@ const root = new Vue({
                     };
 
                     this.contacts[ind].messages.push(replyMessage);
-                    this.scrollDown();
+
                 }, 2000)
 
 
             }
+
         },
 
-        scrollDown() {
-            const chat = document.getElementById('mainChat');
-            chat.scrollHeight;
+        deleteMessage(index) {
 
+            this.contacts[this.currentIndex].messages.splice(index, 1);
 
         }
-
     }
 })
