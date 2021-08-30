@@ -16,6 +16,9 @@ const root = new Vue({
         currentAvatar: '_1',
         currentIndex: 0,
         lastSeen: 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss'),
+        visible: null,
+        searchMsg: ''
+
 
     },
 
@@ -83,6 +86,18 @@ const root = new Vue({
             let lastIndex = contact.messages.length - 1;
             const newMsg = contact.messages[lastIndex].message + " " + contact.messages[lastIndex].date;
             return newMsg;
+        },
+
+        isVisible() {
+            this.visible = !this.visible;
+            return this.visible;
+        },
+
+        showMsg(message) {
+
+            return message.toLowerCase().includes(this.searchMsg.toLowerCase())
+
         }
+
     }
 });

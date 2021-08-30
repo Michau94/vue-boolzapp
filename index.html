@@ -95,7 +95,8 @@
                         </div>
                     </div>
                     <div>
-                        <i class="clickable fas fa-search mx-2"></i>
+                        <input v-model="searchMsg" v-if="visible" type="text" placeholder="Cerca...">
+                        <i @click="isVisible" class="clickable fas fa-search mx-2"></i>
                         <i class="clickable fas fa-paperclip mx-2"></i>
                         <i class="clickable fas fa-ellipsis-v mx-2"></i>
                     </div>
@@ -106,7 +107,7 @@
 
                 <!-- CHAT SECTION -->
                 <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
-                    <div v-for="(message, index) in contacts[currentIndex].messages"
+                    <div v-for="(message, index) in contacts[currentIndex].messages" v-if="showMsg(message.message)"
                         class="chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
                         :class="message.status == 'sent' ? 'sent smr' : 'received sml'">
                         <div class="dropdown align-self-end">
