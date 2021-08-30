@@ -32,6 +32,7 @@
                         </div>
                         <span> {{ user.name }}
                         </span>
+
                     </div>
                     <div>
                         <i class="clickable fas fa-circle-notch mx-2"></i>
@@ -71,8 +72,11 @@
                             <div><img class="img-fluid" :src="'./img/avatar' + contact.avatar + '.jpg'" alt="">
                             </div>
                         </div>
-                        <span class="mx-2"> {{ contact.name }}
-                        </span>
+                        <div class="d-flex flex-column">
+                            <span class="mx-2"> {{ contact.name }}
+                            </span>
+                            <small> {{ showLastMessage(contact) }}</small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +102,9 @@
                     </div>
                 </div>
 
+
+
+
                 <!-- CHAT SECTION -->
                 <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
                     <div v-for="(message, index) in contacts[currentIndex].messages"
@@ -119,7 +126,6 @@
 
                 <!-- MESSAGE SECTION -->
                 <div class="user d-flex align-items-center justify-content-evenly bg-main">
-
                     <i class=" clickable far fa-smile fa-2x"></i>
                     <input v-model="message" @keyup.enter="newMessage(currentIndex)" type="text" class="m-2 w-75"
                         placeholder="Digita il tuo messaggio">
@@ -130,6 +136,7 @@
     </div>
 
     <script src="./js/script.js"></script>
+
 </body>
 
 </html>

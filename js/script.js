@@ -15,10 +15,8 @@ const root = new Vue({
         currentUser: 'Michele',
         currentAvatar: '_1',
         currentIndex: 0,
-
-
-
     },
+
     methods: {
         showFriend(contact) {
             contact.name.toLowerCase().includes(this.search.toLowerCase()) ? contact.visible = true : contact.visible = false;
@@ -43,45 +41,50 @@ const root = new Vue({
 
             if (newMessage.message.trim() !== '' || newMessage.message.trim()) {
                 this.contacts[ind].messages.push(newMessage);
-                this.message = "";
+                this.message = "",
 
 
+                    setTimeout(() => {
+
+                        //array di risposte possibili
+                        let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
+                        let randomReply = '';
+                        let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
 
 
+                        //alla vecchia maniera per non dimenticare il for tradizionale
+                        for (let i = 0; i < possibleReply.length; i++) {
+                            randomReply = possibleReply[randomIndex]
+                        }
 
-                setTimeout(() => {
+                        const replyMessage = {
+                            date: this.today.format('DD/MM/YYYY HH:mm:ss'),
+                            message: randomReply,
+                            status: 'received'
 
-                    //array di risposte possibili
-                    let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
-                    let randomReply = '';
-                    let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
+                        };
 
+                        this.contacts[ind].messages.push(replyMessage);
 
-                    //alla vecchia maniera per non dimenticare il for tradizionale
-                    for (let i = 0; i < possibleReply.length; i++) {
-                        randomReply = possibleReply[randomIndex]
-                    }
-
-                    let replyMessage = {
-                        date: this.today.format('DD/MM/YYYY HH:mm:ss'),
-                        message: randomReply,
-                        status: 'received'
-
-                    };
-
-                    this.contacts[ind].messages.push(replyMessage);
-
-                }, 2000)
-
+                    }, 2000)
 
             }
-
         },
 
         deleteMessage(index) {
 
-            this.contacts[this.currentIndex].messages.splice(index, 1);
+            return this.contacts[this.currentIndex].messages.splice(index, 1);
+
+        },
+
+        showLastMessage(contact) {
+
+            let lastIndex = contact.messages.length - 1;
+            const newMsg = contact.messages[lastIndex].message + " " + contact.messages[lastIndex].date;
+            return newMsg;
 
         }
+
     }
+
 })
