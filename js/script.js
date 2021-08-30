@@ -15,6 +15,8 @@ const root = new Vue({
         currentUser: 'Michele',
         currentAvatar: '_1',
         currentIndex: 0,
+        lastSeen: 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss'),
+
     },
 
     methods: {
@@ -40,34 +42,36 @@ const root = new Vue({
             };
 
             if (newMessage.message.trim() !== '' || newMessage.message.trim()) {
+                this.lastSeen = 'Sta Scrivendo...'
                 this.contacts[ind].messages.push(newMessage);
-                this.message = "",
+                this.message = "";
 
 
-                    setTimeout(() => {
+                setTimeout(() => {
 
-                        //array di risposte possibili
-                        let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
-                        let randomReply = '';
-                        let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
+                    //array di risposte possibili
+                    let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
+                    let randomReply = '';
+                    let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
 
 
-                        //alla vecchia maniera per non dimenticare il for tradizionale
-                        for (let i = 0; i < possibleReply.length; i++) {
-                            randomReply = possibleReply[randomIndex]
-                        }
+                    //alla vecchia maniera per non dimenticare il for tradizionale
+                    for (let i = 0; i < possibleReply.length; i++) {
+                        randomReply = possibleReply[randomIndex]
+                    }
 
-                        const replyMessage = {
-                            date: this.today.format('DD/MM/YYYY HH:mm:ss'),
-                            message: randomReply,
-                            status: 'received'
+                    const replyMessage = {
+                        date: this.today.format('DD/MM/YYYY HH:mm:ss'),
+                        message: randomReply,
+                        status: 'received'
+                    };
 
-                        };
+                    this.contacts[ind].messages.push(replyMessage);
+                    this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
 
-                        this.contacts[ind].messages.push(replyMessage);
 
-                    }, 2000)
 
+                }, 3000)
             }
         },
 
