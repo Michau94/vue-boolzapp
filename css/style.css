@@ -9,7 +9,7 @@
 }
 
 .log-time {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: darkgrey;
 }
 
@@ -99,14 +99,15 @@ body {
 .main-chat {
   background-image: url(../img/mine.jpg);
   height: calc(100% - 140px);
+  overflow-y: scroll;
 }
 
 .chat-mex {
   border-radius: 25px;
-  padding: 20px 15px;
   overflow-wrap: break-word;
   position: relative;
 }
+
 /* message status class */
 
 .sent {
@@ -149,17 +150,18 @@ body {
 }
 
 .dropdown {
+  height: 3px;
   position: relative;
   display: inline-block;
-  padding: 5px;
-  top: 50%;
+  padding: 10px;
+  top: 0;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
-  bottom: 100%;
+  top: 100%;
   background-color: white;
   min-width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);

@@ -17,7 +17,7 @@ const root = new Vue({
         currentIndex: -1,
         lastSeen: 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss'),
         visible: null,
-        searchMsg: ''
+        searchMsg: '',
 
 
     },
@@ -54,9 +54,11 @@ const root = new Vue({
                 this.lastSeen = 'Sta Scrivendo...'
                 this.contacts[ind].messages.push(newMessage);
                 this.message = "";
+                this.scrollEnd();
+
+
 
             }
-
             this.sendReply(ind);
         },
 
@@ -80,6 +82,7 @@ const root = new Vue({
 
                 this.contacts[index].messages.push(replyMessage);
                 this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
+                this.scrollEnd();
 
             }, 3000)
         },
@@ -103,7 +106,17 @@ const root = new Vue({
 
             return message.toLowerCase().includes(this.searchMsg.toLowerCase())
 
+        },
+
+        scrollEnd() {
+            const element = document.querySelector('.chat-mex');
+            element.scrollIntoView({ block: 'start' });
+
+
+
+
         }
+
 
     }
 });

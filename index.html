@@ -103,9 +103,9 @@
                 </div>
 
                 <!-- CHAT SECTION -->
-                <div id="mainChat" class="main-chat d-flex flex-column overflow-auto">
+                <div id="mainChat" class="main-chat d-flex flex-column ">
                     <div v-for="(message, index) in contacts[currentIndex].messages" v-if="showMsg(message.message)"
-                        class="chat-mex w-50 m-3 d-flex flex-column justify-content-center p-2"
+                        class="chat-mex w-50  m-3 d-flex flex-column p-1 justify-content-start "
                         :class="message.status == 'sent' ? 'sent smr' : 'received sml'">
                         <div class="dropdown align-self-end">
                             <i class="fas fa-angle-down"></i>
@@ -115,9 +115,9 @@
                             </div>
                         </div>
 
-                        <p class="m-1 "> {{ message.message }}
+                        <p class=" d-block mx-2 my-0 p-1"> {{ message.message }}
                         </p>
-                        <p class="m-1  log-time align-self-end">{{ message.date }}</p>
+                        <p class=" d-blockm-1 px-2 log-time align-self-end">{{ message.date }}</p>
                     </div>
                 </div>
 
