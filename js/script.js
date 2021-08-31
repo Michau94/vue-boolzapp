@@ -35,6 +35,8 @@ const root = new Vue({
 
         },
 
+        // message obj create
+
         createMsgObj(message, status) {
             const msgTemp = {
                 date: this.today.format('DD/MM/YYYY HH:mm:ss'),
@@ -44,9 +46,13 @@ const root = new Vue({
 
             return msgTemp;
         },
+
+        // new message
         newMessage(ind) {
 
             let newMessage = this.createMsgObj(this.message, 'sent');
+
+            // empty message control
 
             if (newMessage.message.trim() !== '' || newMessage.message.trim()) {
                 this.lastSeen = 'Sta Scrivendo...'
@@ -57,11 +63,12 @@ const root = new Vue({
             }
         },
 
+        // reply message
         sendReply(index) {
 
             setTimeout(() => {
 
-                //array di risposte possibili
+                //possible responses
                 let possibleReply = ['Ok', 'Non mi va ', 'Forse', 'Certamente'];
                 let randomReply = '';
                 let randomIndex = Math.floor(Math.random() * ((possibleReply.length - 1) + 1));
@@ -80,9 +87,11 @@ const root = new Vue({
             }, 3000)
         },
 
+
         deleteMessage(index) {
             return this.contacts[this.currentIndex].messages.splice(index, 1);
         },
+
 
         showLastMessage(contact) {
             let lastIndex = contact.messages.length - 1;
@@ -90,33 +99,27 @@ const root = new Vue({
             return newMsg;
         },
 
+        // search message search bar toggle
         isVisible() {
             this.visible = !this.visible;
             return this.visible;
         },
 
+        // search bar logic
         showMsg(message) {
             return message.toLowerCase().includes(this.searchMsg.toLowerCase())
 
-        },
-        scrollEnd() {
-
-            element.scrollTop = element.scrollHeight;
         }
+
 
     },
 
     updated() {
-
         //scroll down on new message
 
         if (this.currentIndex >= 0) {
             const element = document.getElementById('mainChat');
             element.scrollTop = element.scrollHeight;
-
         }
-
-
     }
-
 });
