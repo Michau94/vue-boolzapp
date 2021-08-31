@@ -25,7 +25,6 @@ const root = new Vue({
     methods: {
         showFriend(contact) {
             contact.name.toLowerCase().includes(this.search.toLowerCase()) ? contact.visible = true : contact.visible = false;
-
             return contact.visible;
         },
 
@@ -44,8 +43,7 @@ const root = new Vue({
             }
 
             return msgTemp;
-        }
-        ,
+        },
         newMessage(ind) {
 
             let newMessage = this.createMsgObj(this.message, 'sent');
@@ -54,16 +52,12 @@ const root = new Vue({
                 this.lastSeen = 'Sta Scrivendo...'
                 this.contacts[ind].messages.push(newMessage);
                 this.message = "";
-                this.scrollEnd();
-
-
+                this.sendReply(ind);
 
             }
-            this.sendReply(ind);
         },
 
         sendReply(index) {
-
 
             setTimeout(() => {
 
@@ -82,7 +76,6 @@ const root = new Vue({
 
                 this.contacts[index].messages.push(replyMessage);
                 this.lastSeen = 'Ultimo accesso:' + dayjs().format('DD/MM/YYYY - HH:mm:ss')
-                this.scrollEnd();
 
             }, 3000)
         },
@@ -103,20 +96,27 @@ const root = new Vue({
         },
 
         showMsg(message) {
-
             return message.toLowerCase().includes(this.searchMsg.toLowerCase())
 
         },
-
         scrollEnd() {
-            const element = document.querySelector('.chat-mex');
-            element.scrollIntoView({ block: 'start' });
 
+            element.scrollTop = element.scrollHeight;
+        }
 
+    },
 
+    updated() {
+
+        //scroll down on new message
+
+        if (this.currentIndex >= 0) {
+            const element = document.getElementById('mainChat');
+            element.scrollTop = element.scrollHeight;
 
         }
 
 
     }
+
 });
